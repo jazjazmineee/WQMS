@@ -1,0 +1,171 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Your existing CSS code here */
+
+/* Paste the provided CSS code here */
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.main {
+    min-height: 100vh;
+    width: calc(100% - 70px); /* Adjust this value to match the width of your sidebar */
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+    background-color: #fafbfe;
+    margin-left: 70px; /* Add left margin equal to the width of the sidebar */
+}
+
+
+#sidebar {
+    width: 70px;
+    min-width: 70px;
+    z-index: 1000;
+    transition: all .25s ease-in-out;
+    /*background-color: #0e2238;*/
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100%; /* Add this line to set the height to 100% */
+}
+
+    #sidebar.expand {
+        width: 260px;
+        min-width: 260px;
+    }
+
+.toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 1rem 1.4rem;
+}
+
+    .toggle-btn i {
+        font-size: 1.5rem;
+        color: #FFF;
+    }
+
+.sidebar-logo {
+    margin: auto 0;
+}
+
+    .sidebar-logo a {
+        color: #FFF;
+        font-size: 1.55rem;
+        font-weight: 600;
+    }
+
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span {
+    display: none;
+}
+
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+a.sidebar-link {
+    padding: 1.625rem 1.2rem;
+    color: #FFF;
+    display: block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link i {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+a.sidebar-link:hover {
+    background-color: #fff;
+    opacity: 80%;
+    border-left: 3px solid #3b7ddd;
+}
+
+
+.sidebar-item {
+    position: relative;
+}
+
+    .sidebar-item a {
+        font-size: 1.1rem;
+    }
+
+.sidebar-footer a {
+    font-size: 1.1rem;
+}
+
+#sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
+    position: absolute;
+    top: 0;
+    left: 70px;
+    background-color: #0e2238;
+    padding: 0;
+    min-width: 15rem;
+    display: none;
+}
+
+#sidebar:not(.expand) .sidebar-item:hover .has-dropdown + .sidebar-dropdown {
+    display: block;
+    max-height: 15em;
+    width: 100%;
+    opacity: 1;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-135deg);
+    transition: all .2s ease-out;
+    font-size: 1.2rem;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+
+.dropdown-menu {
+    right: 0; /* Align the dropdown menu to the right initially */
+}
+
+@media (max-width: 767.98px) {
+    .dropdown-menu {
+        right: auto; /* Remove the right alignment for smaller screens */
+        left: 0; /* Align the dropdown menu to the left */
+    }
+}
